@@ -1,0 +1,18 @@
+.header {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: black;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 38px;
+  }
+}
+
