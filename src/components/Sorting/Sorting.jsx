@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
-import { STATUS, SORTING_OPTIONS, SORTING_NAME } from '../../utils/status';
-import { useDispatch } from 'react-redux';
-import { selectStatus, sortDate, sortName } from '../../store/todoSlice';
+import { SORTING_STATUS, SORTING_OPTIONS, SORTING_NAME } from '../../utils/status';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectStatus, sortName, sortFinishedDate } from '../../store/todoSlice';
 
 const Sorting = () => {
 
@@ -16,6 +16,7 @@ const Sorting = () => {
   }
 
   const handleSortingDate = (e) => {
+    dispatch(sortFinishedDate(e.target.value));
   }
 
   return (
@@ -46,7 +47,7 @@ const Sorting = () => {
           id="sorting-status"
           onChange={handleChangeStatus}
         >
-        {STATUS.map((item) => (
+        {SORTING_STATUS.map((item) => (
           <option
             key={item.id}
             value={item.category}

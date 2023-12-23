@@ -1,0 +1,71 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__form {
+    max-width: 1140px;
+    margin: 30px auto 10px;
+    width: 100%;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 40px;
+    background: #F9F9F9;
+  }
+
+  &__input {
+    width: 100%;
+    height: 46px;
+    padding-left: 22px;
+    border: none;
+    border-radius: 40px;
+    background: #F9F9F9;
+    color: #A0A0A0;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+
+    :focus {
+      outline: 1px solid #2be080;
+    }
+  }
+
+  &__button {
+    max-width: 80px;
+    width: 100%;
+    height: 34px;
+    padding: 0;
+    background-image: url(../../images/find.svg);
+    border: none;
+    border-radius: 40px;
+    margin-right: 6px;
+
+    :hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  &__error {
+    margin: 5px auto 0;
+    min-height: 14px;
+    position: absolute;
+    color: #FF004C;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
