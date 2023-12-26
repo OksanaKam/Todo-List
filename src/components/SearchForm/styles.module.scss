@@ -41,13 +41,18 @@
   }
 
   &__button {
-    max-width: 80px;
+    max-width: 34px;
     width: 100%;
     height: 34px;
     padding: 0;
-    background-image: url(../../images/find.svg);
+    background-image: url(../../images/search-svgrepo-com.svg);
+    background-color: #F9F9F9;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     border: none;
-    border-radius: 40px;
+    cursor: pointer;
+    border-radius: 8px;
     margin-right: 6px;
 
     :hover {

@@ -44,7 +44,9 @@ const NewTodoForm = ({
           </option>
         ))}
       </select>
-      <button className={styles.form__button} onClick={handleAction}>Добавить</button>
+      <button className={styles.form__button} onClick={handleAction}>
+        Добавить
+      </button>
     </label>
   );
 };

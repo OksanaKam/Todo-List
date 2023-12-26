@@ -1,12 +1,108 @@
 .item {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 0;
-  gap: 20px;
+  padding: 0;
+  max-width: 1140px;
+  margin: 0 auto 0;
+  width: 100%;
+  list-style: none;
 
-  &___delete {
-    color: red;
+  &__checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    align-self: center;
+    border-radius: 8px;
+    border: 1px solid #FF6E6E;
+    cursor: pointer;
+
+    &:checked {
+      width: 24px;
+      height: 24px;
+      background: url(../../images/check-svgrepo-com.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+
+  &__text {
+    max-width: 600px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #1E1E1E;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &__deadline {
+    max-width: 200px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #1E1E1E;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &__status {
+    max-width: 100px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #1E1E1E;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &__edit {
+    width: 24px;
+    height: 24px;
+    background: url(../../images/pencil-svgrepo-com_1.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: none;
+
+    &:hover {
+      opacity: 0.6;
+      cursor: pointer;
+    }
+  }
+
+  &__delete {
+    width: 24px;
+    height: 24px;
+    background-image: url(../../images/trash-svgrepo-com_2.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: white;
+    border: none;
+
+    &:hover {
+      opacity: 0.6;
+      cursor: pointer;
+    }
   }
 }

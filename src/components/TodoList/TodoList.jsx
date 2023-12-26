@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import TodoItem from "../TodoItem/TodoItem";
 import styles from './styles.module.scss'
 
-const TodoList = () => {
+const TodoList = ({ handleEditTodoClick, isOpen, onClose, updateText, updateDeadline, updateStatus }) => {
     const todos = useSelector(state => state.todos.todos);
 
     return (
@@ -10,7 +10,14 @@ const TodoList = () => {
             {todos.map((todo) => (
                 <TodoItem
                 key={todo.id}
-                {...todo}
+                /*{...todo}*/
+                todo={todo}
+                handleEditTodoClick={handleEditTodoClick}
+                isOpen={isOpen}
+                onClose={onClose}
+                updateText={updateText}
+                updateDeadline={updateDeadline}
+                updateStatus={updateStatus}
                 />
             ))}
         </ul>
