@@ -12,7 +12,7 @@ const todoSlice = createSlice({
   reducers: {
     addToDo(state, action) {
       state.todos.push({
-        id: new Date().toISOString(),
+        id: action.payload.id,
         text: action.payload.text,
         deadline: action.payload.deadline,
         statusTask: action.payload.statusTask,
@@ -24,12 +24,15 @@ const todoSlice = createSlice({
     },
     editToDo(state, action) {
       console.log(action);
-      const editedTodo = state.todos.find(todo => todo.id === action.payload.id);
+      //state.todos = todoArray.map((item) => item.id === action.payload.id ? action.payload : item)
+
+      const editedTodo = state.todos.find(todo => todo.id === action.payload.id ? action.payload : todo);
       if (editedTodo) {
         editedTodo.text = action.payload.text;
         editedTodo.deadline = action.payload.deadline;
         editedTodo.statusTask = action.payload.statusTask;
       }
+
     },
     toggleToDo(state, action) {
       const toggledTodo = state.todos.find(todo => todo.id === action.payload.id);

@@ -1,7 +1,8 @@
+/*
 import { useEffect } from 'react';
 import styles from './styles.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { editToDo } from '../../store/todoSlice';
+import { addToDo, editToDo } from '../../store/todoSlice';
 import { STATUS } from '../../utils/status';
 import { usePopupClose } from '../../hooks/usePopupClose';
 import { useForm } from '../../hooks/useForm';
@@ -16,7 +17,7 @@ const Popup = ({
 }) => {
 
   const dispatch = useDispatch();
-  const { id, text, deadline, completed, statusTask } = todo;
+  const { id, text, deadline, statusTask } = todo;
   usePopupClose(isOpen, onClose);
   const { setFormValue } = useForm({});
   console.log( id, text, deadline, statusTask);
@@ -24,9 +25,6 @@ const Popup = ({
   const popupClassName = (
     `${styles.popup} ${isOpen && styles.popup_opened}`
   );
-
-  useEffect(() => {
-  }, [text, deadline, updateText, updateDeadline, dispatch, statusTask]);
 
   const handleChangeStatus = (e) => {
     updateStatus(e.target.value)
@@ -38,9 +36,9 @@ const Popup = ({
     if (text.trim().length) {
     dispatch(editToDo({ id, text, deadline, statusTask }));
     console.log(id, text, deadline, statusTask);
-    updateText('');
-    updateDeadline('');
-    updateStatus('Обычный');
+    // updateText('');
+    // updateDeadline('');
+    // updateStatus('Обычный');
     onClose();
     }
   }
@@ -48,11 +46,17 @@ const Popup = ({
   return (
     <div className={popupClassName}>
       <div className={styles.popup__modal}>
-        <button className={styles.popup__close} type='button' onClick={onClose} aria-label='Закрыть'></button>
-        <form className={styles.form}>
+        <button
+          className={styles.popup__close}
+          type='button'
+          onClick={onClose}
+          aria-label='Закрыть'
+        >
+        </button>
+        <form className={styles.form} onSubmit={handleUpdateTodo}>
           <input
             className={styles.form__input}
-            name='text'
+            name='text-popup'
             type='text'
             placeholder="Новая задача"
             value={text}
@@ -60,7 +64,7 @@ const Popup = ({
           />
           <input
             className={styles.form__input}
-            name='deadline'
+            name='deadline-popup'
             type='datetime-local'
             value={deadline}
             onChange={(e) => updateDeadline(e.target.value)}
@@ -68,7 +72,7 @@ const Popup = ({
           <select
             className={styles.form__input}
             name='status-popup'
-            id='status'
+            id='status-popup'
             onChange={handleChangeStatus}
           >
             {STATUS.map((item) => (
@@ -80,7 +84,7 @@ const Popup = ({
               </option>
             ))}
           </select>
-          <button className={styles.form__button} onClick={handleUpdateTodo}>
+          <button className={styles.form__button}>
             Изменить
           </button>
         </form>
@@ -90,3 +94,4 @@ const Popup = ({
 };
 
 export default Popup;
+*/

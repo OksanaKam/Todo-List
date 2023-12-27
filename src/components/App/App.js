@@ -7,52 +7,40 @@ import styles from './styles.module.scss'
 import Header from '../Header/Header';
 import Sorting from '../Sorting/Sorting';
 import SearchForm from '../SearchForm/SearchForm';
-import Popup from '../Popup/Popup';
+// import Popup from '../Popup/Popup';
 
 function App() {
   const [text, setText] = useState('');
   const [deadline, setDeadline] = useState('');
   const [statusTask, setStatusTask] = useState('');
-  // const [editingId, setEditingId] = useState(null);
+  const [id, setId] = useState('');
+  const [isEdit, setIsEdit] = useState(false);
   const [validMessage, setValidMessage] = useState('');
   const dispatch = useDispatch();
-  const todos = useSelector(state => state.todos.todos);
   const query = useSelector(state => state.query);
-  const [allTodos, setAllTodos] = useState(todos);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-/*
-  useEffect(() => {
-    setAllTodos(todos);
-  }, [todos]);
-*/
+
   useEffect(() => {
     setValidMessage('');
   }, [query]);
 
   const handleAction = () => {
     if (text.trim().length) {
-      dispatch(addToDo({ text, deadline, statusTask }));
+      dispatch(addToDo({ id: new Date().toISOString(), text, deadline, statusTask }));
       setText('');
       setDeadline('');
       setStatusTask('Обычный');
     }
-  }
-
-  const handleEditTodo = () => {
-    dispatch(editToDo({ text, deadline, statusTask }));
-    setText(text);
-    setDeadline(deadline);
-    setStatusTask(statusTask);
   }
 
   const handleUpdateTodo = () => {
-    if (text.trim().length) {
-      dispatch(editToDo({ text, deadline, statusTask }));
-      console.log(text, deadline, statusTask);
+      dispatch(editToDo({ id: id, text, deadline, statusTask }));
+      console.log('updateTodo', isEdit);
+      console.log(id, text, deadline, statusTask);
       setText('');
       setDeadline('');
       setStatusTask('Обычный');
-    }
+      setIsEdit(false);
   }
 
   const onChange = (e) => {
@@ -60,17 +48,18 @@ function App() {
   }
 
   const handleEditTodoClick = ({ id, text, deadline, statusTask }) => {
+    setIsEdit(true);
     dispatch(editToDo({ id, text, deadline, statusTask }));
-    setIsPopupOpen(true);
+    // setIsPopupOpen(true);
     setText(text);
     setDeadline(deadline);
     setStatusTask(statusTask);
+    console.log('editTodo', isEdit);
   }
 
   const closePopup = () => {
     setIsPopupOpen(false);
   }
-
 
   return (
     <>
@@ -84,6 +73,8 @@ function App() {
           updateDeadline={setDeadline}
           updateStatus={setStatusTask}
           handleAction={handleAction}
+          handleUpdateTodo={handleUpdateTodo}
+          isEdit={isEdit}
         />
         <SearchForm query={query} validMessage={validMessage} onChange={onChange}  />
         <Sorting />

@@ -4,6 +4,7 @@ import styles from './styles.module.scss'
 
 const TodoList = ({ handleEditTodoClick, isOpen, onClose, updateText, updateDeadline, updateStatus }) => {
     const todos = useSelector(state => state.todos.todos);
+    console.log(todos);
 
     return (
         <ul className={styles.list}>

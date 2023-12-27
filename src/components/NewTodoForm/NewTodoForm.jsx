@@ -7,7 +7,9 @@ const NewTodoForm = ({
   updateText,
   updateDeadline,
   updateStatus,
-  handleAction
+  handleAction,
+  handleUpdateTodo,
+  isEdit
 }) => {
 
   const handleChangeStatus = (e) => {
@@ -19,6 +21,7 @@ const NewTodoForm = ({
       <input
         className={styles.form__input}
         type='text'
+        name='text-form'
         placeholder="Новая задача"
         value={text}
         onChange={(e) => updateText(e.target.value)}
@@ -26,13 +29,14 @@ const NewTodoForm = ({
       <input
         className={styles.form__input}
         type='datetime-local'
+        name='deadline-form'
         value={deadline}
         onChange={(e) => updateDeadline(e.target.value)}
       />
       <select
         className={styles.form__input}
-        name='status'
-        id='status'
+        name='status-form'
+        id='status-form'
         onChange={handleChangeStatus}
       >
         {STATUS.map((item) => (
@@ -44,8 +48,8 @@ const NewTodoForm = ({
           </option>
         ))}
       </select>
-      <button className={styles.form__button} onClick={handleAction}>
-        Добавить
+      <button className={styles.form__button} onClick={isEdit ? handleUpdateTodo : handleAction}>
+        {isEdit ? 'Изменить' : 'Добавить'}
       </button>
     </label>
   );
