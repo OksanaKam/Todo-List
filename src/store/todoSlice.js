@@ -5,7 +5,7 @@ const todoSlice = createSlice({
   initialState: {
     todos: [],
     query: '',
-    statusTask: 'Все',
+    statusTask: '',
     sortingName: 'Без сортировки',
     sortingDate: 'Без сортировки'
   },
@@ -19,25 +19,11 @@ const todoSlice = createSlice({
         completed: false,
       })
     },
-    getToDo(state, action) {
-      state.todos = action.payload;
-    },
     editToDo(state, action) {
-      console.log(action);
-      //state.todos = todoArray.map((item) => item.id === action.payload.id ? action.payload : item)
-
-      const editedTodo = state.todos.find(todo => todo.id === action.payload.id ? action.payload : todo);
-      if (editedTodo) {
-        editedTodo.text = action.payload.text;
-        editedTodo.deadline = action.payload.deadline;
-        editedTodo.statusTask = action.payload.statusTask;
-      }
-
+      state.todos = state.todos.map(todo => todo.id === action.payload.id ? action.payload : todo);
     },
     toggleToDo(state, action) {
-      const toggledTodo = state.todos.find(todo => todo.id === action.payload.id);
-      toggledTodo.completed = !toggledTodo.completed;
-
+      state.todos = state.todos.map(todo => todo.id === action.payload.id ? { ...todo, completed: !todo.completed} : todo);
     },
     removeToDo(state, action) {
       state.todos = state.todos.filter(todo => todo.id !== action.payload.id);
@@ -45,15 +31,8 @@ const todoSlice = createSlice({
     setQuery(state, action) {
       state.query = action.payload.query;
     },
-    selectStatus(state, action) {
-      console.log(state);
-      console.log(action);
-      state.statusTask = action.payload.statusTask;
-      // state.todos = state.todos.filter(todo => todo.statusTask === state.statusTask);
-    },
     sortName(state, action) {
       state.sortingName = action.payload.sortingName;
-
     },
     sortFinishedDate(state, action) {
       console.log(state);

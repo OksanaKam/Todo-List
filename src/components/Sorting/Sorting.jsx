@@ -1,7 +1,9 @@
+import React from 'react';
 import styles from './styles.module.scss';
 import { SORTING_STATUS, SORTING_OPTIONS, SORTING_NAME } from '../../utils/status';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectStatus, sortName, sortFinishedDate } from '../../store/todoSlice';
+import { useDispatch } from 'react-redux';
+import { selectStatus } from '../../store/filterSlice';
+import { sortName, sortFinishedDate} from '../../store/todoSlice'
 
 const Sorting = () => {
 
@@ -33,6 +35,7 @@ const Sorting = () => {
           <option
             key={item.id}
             value={item.labelName}
+            onClick={handleChangeStatus}
           >
             {item.labelName}
           </option>

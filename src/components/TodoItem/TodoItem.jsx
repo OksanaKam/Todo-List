@@ -1,36 +1,37 @@
 import { useDispatch } from "react-redux";
-import { toggleToDo, removeToDo, editToDo } from "../../store/todoSlice";
+import { toggleToDo, removeToDo } from "../../store/todoSlice";
 import styles from './styles.module.scss';
-// import Popup from "../Popup/Popup";
 
 const TodoItem = ({
-  todo,
+  id,
+  text,
+  deadline,
+  completed,
+  statusTask,
   handleEditTodoClick,
-  isOpen,
-  onClose,
-  updateText,
-  updateDeadline,
-  updateStatus
 }) => {
   const dispatch = useDispatch();
-  const { id, text, deadline, completed, statusTask } = todo;
-  console.log(todo);
+
+  const textClassName = (
+    `${styles.item__text} ${completed && styles.item__text_completed}`
+  );
 
   return (
     <>
       <li className={styles.item}>
         <input
           className={styles.item__checkbox}
+          name="checkbox-item"
           type="checkbox"
-          id="checkbox"
+          id="checkbox-item"
           checked={completed}
           onChange={() => dispatch(toggleToDo({ id }))}
         />
-        <label className={styles.item__label} htmlFor="checkbox"></label>
-        <span className={styles.item__text}>{text}</span>
+        <label className={styles.item__label} htmlFor="checkbox-item"></label>
+        <span className={textClassName}>{text}</span>
         <span className={styles.item__deadline}>{deadline}</span>
         <span className={styles.item__statusTask}>{statusTask}</span>
-        <button className={styles.item__edit} onClick={() => handleEditTodoClick(todo)}></button>
+        <button className={styles.item__edit} onClick={() => handleEditTodoClick({ id, text, deadline, completed, statusTask })}></button>
         <button className={styles.item__delete} onClick={() => dispatch(removeToDo({ id }))}></button>
       </li>
     </>

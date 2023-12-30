@@ -32,6 +32,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
+      text-decoration: line-through;
     }
   }
 
@@ -43,10 +44,14 @@
     color: #1E1E1E;
     text-align: left;
     font-family: Arial, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
+    &_completed {
+      text-decoration: line-through red;
+    }
   }
 
   &__deadline {
@@ -56,7 +61,7 @@
     padding: 0;
     color: #1E1E1E;
     font-family: Arial, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -69,7 +74,7 @@
     padding: 0;
     color: #1E1E1E;
     font-family: Arial, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -85,7 +90,7 @@
     border: none;
 
     &:hover {
-      opacity: 0.6;
+      opacity: 0.8;
       cursor: pointer;
     }
   }
@@ -101,7 +106,7 @@
     border: none;
 
     &:hover {
-      opacity: 0.6;
+      opacity: 0.8;
       cursor: pointer;
     }
   }

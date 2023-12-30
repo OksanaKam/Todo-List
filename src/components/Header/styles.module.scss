@@ -1,14 +1,16 @@
 .header {
-  height: 50px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #0C0058;
+  box-shadow: 0 3px 10px rgba($color: #0C0058, $alpha: 0.3);
 
   &__title {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    color: black;
+    color: white;
     font-size: 36px;
     font-style: normal;
     font-weight: normal;

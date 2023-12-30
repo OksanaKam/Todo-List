@@ -1,26 +1,24 @@
-/*
-import { useEffect } from 'react';
 import styles from './styles.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { addToDo, editToDo } from '../../store/todoSlice';
 import { STATUS } from '../../utils/status';
 import { usePopupClose } from '../../hooks/usePopupClose';
-import { useForm } from '../../hooks/useForm';
 
 const Popup = ({
-  todo,
+  id,
+  text,
+  deadline,
+  statusTask,
   updateText,
   updateDeadline,
   updateStatus,
+  handleAction,
+  handleUpdateTodo,
   isOpen,
-  onClose
+  onClose,
+  isEdit
 }) => {
 
-  const dispatch = useDispatch();
-  const { id, text, deadline, statusTask } = todo;
   usePopupClose(isOpen, onClose);
-  const { setFormValue } = useForm({});
-  console.log( id, text, deadline, statusTask);
+  console.log(id, text, deadline, statusTask);
 
   const popupClassName = (
     `${styles.popup} ${isOpen && styles.popup_opened}`
@@ -30,16 +28,12 @@ const Popup = ({
     updateStatus(e.target.value)
   }
 
-  const handleUpdateTodo = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
-    console.log('click update');
-    if (text.trim().length) {
-    dispatch(editToDo({ id, text, deadline, statusTask }));
-    console.log(id, text, deadline, statusTask);
-    // updateText('');
-    // updateDeadline('');
-    // updateStatus('Обычный');
-    onClose();
+    if (isEdit) {
+      handleUpdateTodo();
+    } else {
+      handleAction()
     }
   }
 
@@ -53,7 +47,7 @@ const Popup = ({
           aria-label='Закрыть'
         >
         </button>
-        <form className={styles.form} onSubmit={handleUpdateTodo}>
+        <form className={styles.form} onSubmit={handleClick}>
           <input
             className={styles.form__input}
             name='text-popup'
@@ -85,7 +79,7 @@ const Popup = ({
             ))}
           </select>
           <button className={styles.form__button}>
-            Изменить
+            {isEdit ? 'Изменить' : 'Добавить'}
           </button>
         </form>
       </div>
@@ -94,4 +88,3 @@ const Popup = ({
 };
 
 export default Popup;
-*/

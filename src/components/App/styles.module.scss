@@ -1,3 +1,31 @@
 .main {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  width: 292px;
+  height: 52px;
+  margin: 30px auto;
+  padding: 14px 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #FF6E6E;
+  color: #FDFDFD;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  border: none;
+  box-shadow: 0 3px 10px rgba($color: #0C0058, $alpha: 0.1);
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 }
